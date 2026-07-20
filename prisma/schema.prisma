@@ -1,0 +1,124 @@
+datasource db {
+  provider = "postgresql"
+}
+
+
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id           String        @id @default(uuid())
+  email        String        @unique
+  name         String
+  passwordHash String?
+  role         String        @default("CANDIDATE") // CANDIDATE, EMPLOYER, ADMIN
+  membership   String        @default("FREE")      // FREE, PREMIUM
+  avatarUrl    String?
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  
+  profile      Profile?
+  applications Application[]
+  badges       Badge[]
+  documents    Document[]
+  forumPosts   ForumPost[]
+  comments     ForumComment[]
+}
+
+model Profile {
+  id                 String   @id @default(uuid())
+  userId             String   @unique
+  user               User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title              String?
+  bio                String?
+  education          String?
+  skills             String?  // Comma-separated or JSON string
+  interests          String?  // Comma-separated or JSON string
+  resumeName         String?
+  resumeText         String?  // Storing text content of CV for simulated AI parsing
+  completedChecklist String?  // JSON string
+  updatedAt          DateTime @updatedAt
+}
+
+model Opportunity {
+  id               String        @id @default(uuid())
+  title            String
+  description      String
+  requirements     String
+  organizationName String
+  logoUrl          String?
+  category         String        // SCHOLARSHIP, JOB, INTERNSHIP, FELLOWSHIP, COMPETITION, GRANT, EXCHANGE, CONFERENCE, COURSE
+  subCategory      String?       // Undergraduate, remote-job, Fully Funded, etc.
+  fundingType      String        // FULLY_FUNDED, PARTIAL, PAID, UNPAID, FREE
+  degreeLevel      String        // UNDERGRADUATE, MASTERS, PHD, POSTDOC, NONE
+  location         String        // Country name or 'Global'
+  isRemote         Boolean       @default(false)
+  deadline         DateTime
+  applyUrl         String?
+  isApproved       Boolean       @default(false)
+  isFeatured       Boolean       @default(false)
+  views            Int           @default(0)
+  applicationsCount Int          @default(0)
+  createdAt        DateTime      @default(now())
+  updatedAt        DateTime      @updatedAt
+  applications     Application[]
+}
+
+model Application {
+  id            String      @id @default(uuid())
+  userId        String
+  user          User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  opportunityId String
+  opportunity   Opportunity @relation(fields: [opportunityId], references: [id], onDelete: Cascade)
+  status        String      @default("SAVED") // SAVED, APPLIED, INTERVIEW, OFFERED, REJECTED
+  notes         String?
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+
+  @@unique([userId, opportunityId])
+}
+
+model Badge {
+  id          String   @id @default(uuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name        String
+  description String
+  icon        String   // Lucide icon name string
+  earnedAt    DateTime @default(now())
+}
+
+model Document {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name      String
+  fileType  String
+  sizeBytes Int
+  url       String?  // File URL path
+  createdAt DateTime @default(now())
+}
+
+model ForumPost {
+  id        String         @id @default(uuid())
+  title     String
+  content   String
+  category  String         // SCHOLARSHIPS, JOBS, NETWORKING, GENERAL
+  authorId  String
+  author    User           @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  comments  ForumComment[]
+  createdAt DateTime       @default(now())
+  updatedAt DateTime       @updatedAt
+}
+
+model ForumComment {
+  id        String    @id @default(uuid())
+  content   String
+  postId    String
+  post      ForumPost @relation(fields: [postId], references: [id], onDelete: Cascade)
+  authorId  String
+  author    User      @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  createdAt DateTime  @default(now())
+}
