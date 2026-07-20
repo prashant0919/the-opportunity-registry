@@ -56,11 +56,11 @@ export default function Navbar() {
           {/* Logo */}
           <div className="flex items-center">
             <Link href="/" className="flex items-center gap-2.5 group">
-              <div className="relative flex items-center justify-center w-9 h-9 rounded-lg overflow-hidden group-hover:scale-105 transition-transform duration-350 bg-white shadow-sm border border-slate-100 dark:border-slate-800">
+              <div className="relative flex items-center justify-center w-9 h-9 rounded-xl overflow-hidden group-hover:scale-105 transition-transform duration-300 bg-white dark:bg-slate-900 shadow-sm border border-slate-200 dark:border-slate-800 p-1 shrink-0">
                 <img
                   src="/logo.png"
                   alt="The Opportunity Registry Logo"
-                  className="w-full h-full object-cover scale-[1.3] translate-y-[-1px]"
+                  className="w-full h-full object-contain"
                 />
               </div>
               <span className="font-bold text-lg tracking-tight bg-gradient-to-r from-slate-900 via-brand-700 to-indigo-600 dark:from-white dark:via-brand-400 dark:to-indigo-300 bg-clip-text text-transparent">
