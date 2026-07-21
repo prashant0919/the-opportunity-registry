@@ -55,17 +55,22 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center">
-            <Link href="/" className="flex items-center gap-2.5 group">
-              <div className="relative flex items-center justify-center w-9 h-9 rounded-xl overflow-hidden group-hover:scale-105 transition-transform duration-300 bg-white dark:bg-slate-900 shadow-sm border border-slate-200 dark:border-slate-800 p-1 shrink-0">
+            <Link href="/" className="flex items-center gap-3 group">
+              <div className="relative flex items-center justify-center w-10 h-10 rounded-xl overflow-hidden group-hover:scale-105 transition-transform duration-300 bg-white dark:bg-slate-900 shadow-md border border-slate-200/80 dark:border-slate-800 p-0.5 shrink-0">
                 <img
                   src="/logo.png"
                   alt="The Opportunity Registry Logo"
                   className="w-full h-full object-contain"
                 />
               </div>
-              <span className="font-bold text-lg tracking-tight bg-gradient-to-r from-slate-900 via-brand-700 to-indigo-600 dark:from-white dark:via-brand-400 dark:to-indigo-300 bg-clip-text text-transparent">
-                The Opportunity Registry
-              </span>
+              <div className="flex flex-col text-left">
+                <span className="font-extrabold text-base sm:text-lg tracking-tight leading-none bg-gradient-to-r from-slate-900 via-brand-700 to-indigo-600 dark:from-white dark:via-brand-400 dark:to-indigo-300 bg-clip-text text-transparent">
+                  The Opportunity Registry
+                </span>
+                <span className="text-[10px] font-semibold tracking-wider text-slate-400 dark:text-slate-500 uppercase leading-tight mt-0.5">
+                  AI Global Platform
+                </span>
+              </div>
             </Link>
           </div>
 
@@ -84,14 +89,37 @@ export default function Navbar() {
                 </Link>
               );
             })}
+            {/* Show Admin tab ONLY if user is ADMIN */}
+            {user.role === "ADMIN" && (
+              <Link
+                href="/admin"
+                className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-sm transition-all duration-200 ${activeClass("/admin")}`}
+              >
+                <ShieldCheck className="w-4 h-4 text-rose-500" />
+                Admin Panel
+              </Link>
+            )}
           </div>
 
           {/* Right Actions */}
-          <div className="hidden md:flex items-center gap-4">
+          <div className="hidden md:flex items-center gap-3">
+            {/* Dedicated Employer Portal CTA */}
+            <Link
+              href="/employer"
+              className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all duration-200 ${
+                pathname.startsWith("/employer")
+                  ? "bg-emerald-600 text-white shadow-md shadow-emerald-600/20"
+                  : "bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border border-emerald-200/80 dark:border-emerald-800/80 hover:bg-emerald-100 dark:hover:bg-emerald-900/60"
+              }`}
+            >
+              <Building2 className="w-3.5 h-3.5" />
+              <span>Employer Portal</span>
+            </Link>
+
             {/* Theme Toggle */}
             <button
               onClick={toggleTheme}
-              className="p-2.5 rounded-xl text-slate-500 hover:text-brand-600 dark:text-slate-400 dark:hover:text-brand-400 hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-all duration-200"
+              className="p-2 rounded-xl text-slate-500 hover:text-brand-600 dark:text-slate-400 dark:hover:text-brand-400 hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-all duration-200"
               aria-label="Toggle theme"
             >
               {theme === "light" ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4" />}
@@ -159,17 +187,20 @@ export default function Navbar() {
                       <Building2 className="w-4 h-4 text-emerald-500" />
                       Employer Portal
                     </button>
-                    <button
-                      onClick={() => handleRoleSwitch("ADMIN")}
-                      className={`flex items-center gap-2 w-full text-left px-3 py-2 text-sm rounded-lg transition-colors ${
-                        user.role === "ADMIN" 
-                          ? "bg-rose-50 dark:bg-rose-950/20 text-rose-600 dark:text-rose-400 font-medium" 
-                          : "text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800/50"
-                      }`}
-                    >
-                      <ShieldCheck className="w-4 h-4 text-rose-500" />
-                      Admin Control
-                    </button>
+                    {/* ONLY SHOW ADMIN CONTROL IF USER IS ADMIN */}
+                    {user.role === "ADMIN" && (
+                      <button
+                        onClick={() => handleRoleSwitch("ADMIN")}
+                        className={`flex items-center gap-2 w-full text-left px-3 py-2 text-sm rounded-lg transition-colors ${
+                          user.role === "ADMIN" 
+                            ? "bg-rose-50 dark:bg-rose-950/20 text-rose-600 dark:text-rose-400 font-medium" 
+                            : "text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800/50"
+                        }`}
+                      >
+                        <ShieldCheck className="w-4 h-4 text-rose-500" />
+                        Admin Control
+                      </button>
+                    )}
                   </div>
                 </>
               )}
@@ -211,6 +242,24 @@ export default function Navbar() {
               </Link>
             );
           })}
+          <Link
+            href="/employer"
+            onClick={() => setMobileMenuOpen(false)}
+            className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-base text-emerald-600 dark:text-emerald-400 font-semibold bg-emerald-50 dark:bg-emerald-950/20"
+          >
+            <Building2 className="w-5 h-5" />
+            Employer Portal
+          </Link>
+          {user.role === "ADMIN" && (
+            <Link
+              href="/admin"
+              onClick={() => setMobileMenuOpen(false)}
+              className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-base text-rose-600 dark:text-rose-400 font-semibold bg-rose-50 dark:bg-rose-950/20"
+            >
+              <ShieldCheck className="w-5 h-5" />
+              Admin Dashboard
+            </Link>
+          )}
           
           <div className="border-t border-slate-100 dark:border-slate-800 my-2 pt-2">
             <p className="text-[10px] uppercase font-semibold text-slate-400 px-3 pb-1">
@@ -235,15 +284,17 @@ export default function Navbar() {
                 <Building2 className="w-5 h-5 text-emerald-500" />
                 Employer Portal
               </button>
-              <button
-                onClick={() => { handleRoleSwitch("ADMIN"); setMobileMenuOpen(false); }}
-                className={`flex items-center gap-3 w-full text-left px-3 py-2.5 text-sm rounded-lg ${
-                  user.role === "ADMIN" ? "bg-rose-50 dark:bg-rose-950/20 text-rose-600 dark:text-rose-400 font-semibold" : "text-slate-700 dark:text-slate-300"
-                }`}
-              >
-                <ShieldCheck className="w-5 h-5 text-rose-500" />
-                Admin Dashboard
-              </button>
+              {user.role === "ADMIN" && (
+                <button
+                  onClick={() => { handleRoleSwitch("ADMIN"); setMobileMenuOpen(false); }}
+                  className={`flex items-center gap-3 w-full text-left px-3 py-2.5 text-sm rounded-lg ${
+                    user.role === "ADMIN" ? "bg-rose-50 dark:bg-rose-950/20 text-rose-600 dark:text-rose-400 font-semibold" : "text-slate-700 dark:text-slate-300"
+                  }`}
+                >
+                  <ShieldCheck className="w-5 h-5 text-rose-500" />
+                  Admin Dashboard
+                </button>
+              )}
             </div>
           </div>
         </div>

@@ -42,10 +42,11 @@ interface EmployerClientProps {
 }
 
 export default function EmployerClient({ opportunities, applicants }: EmployerClientProps) {
-  const { user } = useAuth();
+  const { user, switchRole } = useAuth();
   const { showToast } = useNotification();
 
   const [activeTab, setActiveTab] = useState<"post" | "listings" | "applicants">("listings");
+
   
   // Dynamic list of listings
   const [oppList, setOppList] = useState<Opportunity[]>(opportunities);
@@ -164,6 +165,31 @@ export default function EmployerClient({ opportunities, applicants }: EmployerCl
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 transition-colors duration-300">
       
+      {/* Role Notice Banner */}
+      {user.role !== "EMPLOYER" && (
+        <div className="mb-8 p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <div className="p-2.5 rounded-xl bg-emerald-500/20 text-emerald-600 dark:text-emerald-400">
+              <Building2 className="w-5 h-5" />
+            </div>
+            <div className="text-left">
+              <p className="text-xs font-bold text-emerald-800 dark:text-emerald-300">
+                Employer & Recruiter Suite
+              </p>
+              <p className="text-[11px] text-emerald-600/90 dark:text-emerald-400/90">
+                You are previewing the portal as {user.name} ({user.role}). Switch your active role to EMPLOYER for full recruiter privileges.
+              </p>
+            </div>
+          </div>
+          <button
+            onClick={() => switchRole("EMPLOYER")}
+            className="px-4 py-2 rounded-xl text-xs font-extrabold bg-emerald-600 hover:bg-emerald-700 text-white shadow-md transition-all shrink-0"
+          >
+            Switch to Employer Mode
+          </button>
+        </div>
+      )}
+
       {/* Title */}
       <div className="mb-10 text-left">
         <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 mb-4">

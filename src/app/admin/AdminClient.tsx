@@ -38,8 +38,34 @@ interface AdminClientProps {
 export default function AdminClient({ opportunities, users }: AdminClientProps) {
   const { user } = useAuth();
   const { showToast } = useNotification();
-  
+
+  // Strict role check for Admin Portal
+  if (user.role !== "ADMIN") {
+    return (
+      <div className="min-h-[75vh] flex items-center justify-center px-4">
+        <div className="max-w-md w-full p-8 rounded-3xl glass-card border border-rose-200/80 dark:border-rose-900/40 text-center shadow-2xl">
+          <div className="w-16 h-16 rounded-2xl bg-rose-500/10 text-rose-500 flex items-center justify-center mx-auto mb-6 ring-8 ring-rose-500/5">
+            <ShieldCheck className="w-8 h-8" />
+          </div>
+          <h2 className="text-2xl font-extrabold text-slate-900 dark:text-white mb-2">
+            Admin Portal Restricted
+          </h2>
+          <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mb-8 leading-relaxed">
+            You are signed in as <span className="font-semibold text-slate-800 dark:text-slate-200">{user.name} ({user.role})</span>. Administrative controls are restricted to platform superusers.
+          </p>
+          <a
+            href="/explore"
+            className="block w-full py-3 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold text-sm shadow-lg hover:opacity-90 transition-all text-center"
+          >
+            Return to Opportunities
+          </a>
+        </div>
+      </div>
+    );
+  }
+
   const [activeTab, setActiveTab] = useState<"pending" | "orgs" | "users">("pending");
+
   
   // Dynamic lists updated via server actions
   const [oppList, setOppList] = useState<Opportunity[]>(opportunities);

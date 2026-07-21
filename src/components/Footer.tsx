@@ -20,17 +20,22 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
           {/* Logo & Vision */}
           <div className="col-span-1 md:col-span-1">
-            <Link href="/" className="flex items-center gap-2.5 group mb-4">
-              <div className="relative flex items-center justify-center w-8 h-8 rounded-xl overflow-hidden bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-1 shrink-0">
+            <Link href="/" className="flex items-center gap-3 group mb-4">
+              <div className="relative flex items-center justify-center w-9 h-9 rounded-xl overflow-hidden bg-white dark:bg-slate-900 shadow-sm border border-slate-200 dark:border-slate-800 p-0.5 shrink-0">
                 <img
                   src="/logo.png"
                   alt="The Opportunity Registry Logo"
                   className="w-full h-full object-contain"
                 />
               </div>
-              <span className="font-bold text-sm bg-gradient-to-r from-slate-900 via-brand-700 to-indigo-600 dark:from-white dark:via-brand-400 dark:to-indigo-300 bg-clip-text text-transparent">
-                The Opportunity Registry
-              </span>
+              <div className="flex flex-col text-left">
+                <span className="font-extrabold text-sm tracking-tight leading-none bg-gradient-to-r from-slate-900 via-brand-700 to-indigo-600 dark:from-white dark:via-brand-400 dark:to-indigo-300 bg-clip-text text-transparent">
+                  The Opportunity Registry
+                </span>
+                <span className="text-[9px] font-semibold tracking-wider text-slate-400 dark:text-slate-500 uppercase leading-tight mt-0.5">
+                  AI Global Platform
+                </span>
+              </div>
             </Link>
             <p className="text-xs leading-relaxed text-slate-500 dark:text-slate-400">
               The world's premium AI-powered global opportunity ecosystem helping students, graduates, and professionals discover life-changing scholarships, fellowships, and careers.
