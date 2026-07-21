@@ -67,8 +67,8 @@ export default function Navbar() {
                 <span className="font-extrabold text-base sm:text-lg tracking-tight leading-none bg-gradient-to-r from-slate-900 via-brand-700 to-indigo-600 dark:from-white dark:via-brand-400 dark:to-indigo-300 bg-clip-text text-transparent">
                   The Opportunity Registry
                 </span>
-                <span className="text-[10px] font-semibold tracking-wider text-slate-400 dark:text-slate-500 uppercase leading-tight mt-0.5">
-                  AI Global Platform
+                <span className="text-[10px] font-semibold tracking-wider text-red-600 dark:text-red-400 uppercase leading-tight mt-0.5 flex items-center gap-1">
+                  <span>🇳🇵</span> Nepal Opportunity Hub
                 </span>
               </div>
             </Link>

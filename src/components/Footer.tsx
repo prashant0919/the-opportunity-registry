@@ -32,13 +32,13 @@ export default function Footer() {
                 <span className="font-extrabold text-sm tracking-tight leading-none bg-gradient-to-r from-slate-900 via-brand-700 to-indigo-600 dark:from-white dark:via-brand-400 dark:to-indigo-300 bg-clip-text text-transparent">
                   The Opportunity Registry
                 </span>
-                <span className="text-[9px] font-semibold tracking-wider text-slate-400 dark:text-slate-500 uppercase leading-tight mt-0.5">
-                  AI Global Platform
+                <span className="text-[9px] font-semibold tracking-wider text-red-600 dark:text-red-400 uppercase leading-tight mt-0.5 flex items-center gap-1">
+                  <span>🇳🇵</span> Nepal Opportunity Hub
                 </span>
               </div>
             </Link>
             <p className="text-xs leading-relaxed text-slate-500 dark:text-slate-400">
-              The world's premium AI-powered global opportunity ecosystem helping students, graduates, and professionals discover life-changing scholarships, fellowships, and careers.
+              Nepal's premier daily opportunity portal helping students, graduates, and professionals discover Lok Sewa vacancies, INGO/NGO programs, Tech & Banking careers, and fully funded study-abroad scholarships.
             </p>
           </div>
 
