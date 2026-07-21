@@ -35,7 +35,7 @@ const PIN_POINTS = [
 
 const OPPORTUNITIES_TABS = [
   { title: "Gates Cambridge", cat: "SCHOLARSHIP", loc: "UK", icon: "cap", x: 490, y: 80 },
-  { title: "OpenAI AI Engineer", cat: "JOB", loc: "USA", icon: "brief", x: 190, y: 130 },
+  { title: "OpenAI AI/ML Engineer", cat: "JOB", loc: "USA", icon: "brief", x: 190, y: 130 },
   { title: "CERN Fellowship", cat: "FELLOWSHIP", loc: "Switzerland", icon: "cap", x: 510, y: 140 },
   { title: "Google DeepMind ML", cat: "INTERNSHIP", loc: "UK", icon: "brief", x: 450, y: 70 },
   { title: "Global AI Hackathon", cat: "COMPETITION", loc: "Online", icon: "award", x: 630, y: 190 },

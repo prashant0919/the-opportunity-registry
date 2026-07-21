@@ -151,7 +151,7 @@ async function main() {
 
     // 2. Jobs
     {
-      title: "Senior AI Software Engineer",
+      title: "Senior AI/ML Engineer",
       description: "Join our core engineering team to build scalable inference pipelines and fine-tune large language models for production workflows. Highly autonomous, fully remote team.",
       requirements: "3+ years of production experience in Python, PyTorch, Next.js, Docker, and experience managing LLM endpoints.",
       organizationName: "OpenAI Dev Group",

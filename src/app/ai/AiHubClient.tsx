@@ -36,7 +36,7 @@ export default function AiHubClient({ opportunities }: AiHubClientProps) {
 
   const predefinedPrompts = [
     "Am I eligible for the Gates Cambridge Scholarship?",
-    "What coding skills do I need for a Senior AI Engineer role?",
+    "What coding skills do I need for a Senior AI/ML Engineer role?",
     "Suggest internships matching Next.js and PyTorch.",
     "Give me tips for writing a strong Statement of Purpose."
   ];
@@ -59,12 +59,12 @@ export default function AiHubClient({ opportunities }: AiHubClientProps) {
 1. You must be an international citizen (not UK).
 2. You must apply for a full-time PhD, MSc, or MPhil at the University of Cambridge.
 3. As a Stanford CS graduate with a 3.9 GPA, you possess strong academic indicators. Focus your personal statement heavily on your leadership potential and commitment to social impact (e.g. how your machine learning work helps climate/society).`;
-      } else if (lower.includes("ai engineer") || lower.includes("skills") || lower.includes("openai")) {
-        reply = `For Senior AI roles (like the OpenAI listing):
+      } else if (lower.includes("ai/ml") || lower.includes("ai engineer") || lower.includes("skills") || lower.includes("openai")) {
+        reply = `For Senior AI/ML Engineer roles (like the OpenAI listing):
 - Core Technologies: PyTorch/TensorFlow, Python, Docker, Next.js (for model wrapper deployments).
 - Deep Learning Theory: Transformer architectures, attention mechanisms, fine-tuning techniques (LoRA, QLoRA), RLHF, and inference optimization.
 - Systems engineering: Managing distributed model training and GPU memory constraints.
-You have solid baseline skills in PyTorch and Python. Focus on building portfolo projects displaying inference deployments.`;
+You have solid baseline skills in PyTorch and Python. Focus on building portfolio projects displaying inference deployments.`;
       } else if (lower.includes("internship") || lower.includes("next.js") || lower.includes("pytorch")) {
         reply = `Based on your profile, I recommend:
 1. Google DeepMind Summer Research Internship (UK): Matches your PyTorch and Stanford ML research background.
