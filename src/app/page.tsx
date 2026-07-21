@@ -45,44 +45,43 @@ export default async function HomePage() {
     <div className="relative min-h-screen">
       {/* 1. HERO SECTION */}
       <section className="relative pt-20 pb-32 flex flex-col items-center justify-center min-h-[85vh] text-center px-4 overflow-hidden border-b border-slate-200/50 dark:border-slate-800/50">
-        {/* Animated Map background */}
         <WorldMap />
 
         {/* Hero Content */}
         <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center">
           {/* Badge */}
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-brand-500/10 text-brand-600 dark:text-brand-400 border border-brand-500/20 mb-6 backdrop-blur-md animate-float">
-            <Sparkles className="w-3.5 h-3.5" />
-            Empowering Next-Gen Global Leaders with AI
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-red-500/10 text-red-600 dark:text-red-400 border border-red-500/20 mb-6 backdrop-blur-md animate-float">
+            <span className="text-base">🇳🇵</span>
+            Nepal's Daily Opportunity Hub: Lok Sewa, INGOs, Tech & Scholarships
           </div>
 
           {/* Title */}
           <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.1] mb-6">
-            Discover Your Next <br className="hidden sm:inline" />
-            <span className="bg-gradient-to-r from-brand-600 via-indigo-500 to-indigo-700 dark:from-brand-400 dark:via-indigo-400 dark:to-indigo-300 bg-clip-text text-transparent">
-              Global Opportunity
+            Nepal's Premier <br className="hidden sm:inline" />
+            <span className="bg-gradient-to-r from-red-600 via-brand-600 to-indigo-600 dark:from-red-400 dark:via-brand-400 dark:to-indigo-300 bg-clip-text text-transparent">
+              Opportunity & Job Registry
             </span>
           </h1>
 
           {/* Subtitle */}
           <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl mb-10 leading-relaxed">
-            Find scholarships, internships, jobs, fellowships, grants, competitions, conferences, and career opportunities from around the world—all powered by AI.
+            Everyday updates on Lok Sewa Commission vacancies, INGO/NGO projects, Tech & Banking careers, and fully funded international scholarships for Nepali youth.
           </p>
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
             <Link
               href="/explore"
-              className="w-full sm:w-auto px-8 py-4 rounded-xl text-sm font-semibold bg-brand-600 hover:bg-brand-700 text-white shadow-lg shadow-brand-500/25 hover:shadow-brand-500/35 transform hover:-translate-y-0.5 transition-all text-center"
+              className="w-full sm:w-auto px-8 py-4 rounded-xl text-sm font-bold bg-red-600 hover:bg-red-700 text-white shadow-lg shadow-red-500/25 hover:shadow-red-500/35 transform hover:-translate-y-0.5 transition-all text-center"
             >
-              Explore Opportunities
+              Explore Nepal Listings
             </Link>
             <Link
               href="/explore?tab=ai"
               className="w-full sm:w-auto px-8 py-4 rounded-xl text-sm font-semibold bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800/80 transition-all text-center flex items-center justify-center gap-2"
             >
               <Sparkles className="w-4 h-4 text-brand-500 animate-pulse" />
-              Try AI Matching
+              Try AI Nepal Matcher
             </Link>
           </div>
         </div>
@@ -93,20 +92,20 @@ export default async function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             <div className="p-4">
-              <p className="text-3xl font-extrabold text-brand-600 dark:text-brand-400">12,500+</p>
-              <p className="text-xs text-slate-500 dark:text-slate-400 font-medium uppercase tracking-wider mt-1">Active Opportunities</p>
+              <p className="text-3xl font-extrabold text-red-600 dark:text-red-400">4,500+</p>
+              <p className="text-xs text-slate-500 dark:text-slate-400 font-medium uppercase tracking-wider mt-1">Nepal Job & Scholarship Listings</p>
             </div>
             <div className="p-4">
-              <p className="text-3xl font-extrabold text-slate-900 dark:text-white">140+</p>
-              <p className="text-xs text-slate-500 dark:text-slate-400 font-medium uppercase tracking-wider mt-1">Countries Seeded</p>
+              <p className="text-3xl font-extrabold text-slate-900 dark:text-white">7 Provinces</p>
+              <p className="text-xs text-slate-500 dark:text-slate-400 font-medium uppercase tracking-wider mt-1">Kathmandu, Pokhara, Chitwan & All Nepal</p>
             </div>
             <div className="p-4">
-              <p className="text-3xl font-extrabold text-brand-600 dark:text-brand-400">98.4%</p>
-              <p className="text-xs text-slate-500 dark:text-slate-400 font-medium uppercase tracking-wider mt-1">AI Matching Accuracy</p>
+              <p className="text-3xl font-extrabold text-brand-600 dark:text-brand-400">100% Verified</p>
+              <p className="text-xs text-slate-500 dark:text-slate-400 font-medium uppercase tracking-wider mt-1">Lok Sewa & INGO Direct Sourcing</p>
             </div>
             <div className="p-4">
-              <p className="text-3xl font-extrabold text-slate-900 dark:text-white">$12M+</p>
-              <p className="text-xs text-slate-500 dark:text-slate-400 font-medium uppercase tracking-wider mt-1">Total Funding Indexed</p>
+              <p className="text-3xl font-extrabold text-slate-900 dark:text-white">Daily Updates</p>
+              <p className="text-xs text-slate-500 dark:text-slate-400 font-medium uppercase tracking-wider mt-1">Real-Time Sector Tracking</p>
             </div>
           </div>
         </div>

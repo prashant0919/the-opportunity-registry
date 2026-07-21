@@ -222,11 +222,14 @@ export default function ExploreClient({ initialOpportunities }: ExploreClientPro
       
       {/* Search Header Panel */}
       <div className="mb-10 text-left">
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-red-500/10 text-red-600 dark:text-red-400 border border-red-500/20 mb-3">
+          <span>🇳🇵</span> Nepal Opportunity Registry
+        </div>
         <h1 className="text-3xl font-extrabold text-slate-900 dark:text-white mb-2">
-          Global Opportunities Directory
+          Nepal Career & Scholarship Directory
         </h1>
         <p className="text-slate-500 dark:text-slate-400 text-sm mb-6">
-          Search and sort thousands of indexed listings. Enable AI Search to automatically match your profile interests.
+          Daily verified listings for Lok Sewa (लोक सेवा), INGO/NGO programs, Tech & Banking roles, and international scholarships for Nepali students.
         </p>
 
         {/* Premium Search Bar */}
@@ -237,18 +240,18 @@ export default function ExploreClient({ initialOpportunities }: ExploreClientPro
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search by keywords, organization or use Natural Language (e.g. 'Fully funded research jobs in UK')..."
-              className="w-full pl-10 pr-4 py-3.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 text-slate-800 dark:text-slate-100 focus:outline-none focus:border-brand-500 text-sm focus:ring-1 focus:ring-brand-500/20"
+              placeholder="Search by keywords, e.g. 'Lok Sewa Officer', 'USAID Nepal', 'Full-stack Kathmandu', 'Fulbright'..."
+              className="w-full pl-10 pr-4 py-3.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 text-slate-800 dark:text-slate-100 focus:outline-none focus:border-red-500 text-sm focus:ring-1 focus:ring-red-500/20"
               onKeyDown={(e) => { if (e.key === "Enter") handleAiSearch(); }}
             />
           </div>
           <button
             onClick={handleAiSearch}
             disabled={isAiSearch}
-            className="px-6 py-3.5 rounded-xl bg-gradient-to-r from-brand-600 to-indigo-600 text-white font-semibold text-sm hover:from-brand-700 hover:to-indigo-750 transition-all flex items-center justify-center gap-2 shadow-md shadow-brand-500/10 shrink-0"
+            className="px-6 py-3.5 rounded-xl bg-gradient-to-r from-red-600 to-brand-600 text-white font-semibold text-sm hover:from-red-700 hover:to-brand-700 transition-all flex items-center justify-center gap-2 shadow-md shadow-red-500/10 shrink-0"
           >
             <Sparkles className={`w-4 h-4 ${isAiSearch ? "animate-spin" : "animate-pulse"}`} />
-            {isAiSearch ? "Analyzing Intent..." : "AI Search Match"}
+            {isAiSearch ? "Analyzing Intent..." : "AI Nepal Matcher"}
           </button>
         </div>
       </div>
@@ -260,12 +263,12 @@ export default function ExploreClient({ initialOpportunities }: ExploreClientPro
           <div className="p-5 rounded-2xl glass-card border border-lightborder dark:border-darkborder text-left">
             <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3 mb-4">
               <span className="font-bold text-sm text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
-                <SlidersHorizontal className="w-4 h-4 text-brand-500" />
-                Advanced Filters
+                <SlidersHorizontal className="w-4 h-4 text-red-500" />
+                Nepal Filters
               </span>
               <button 
                 onClick={resetFilters}
-                className="text-xs text-brand-600 dark:text-brand-400 hover:underline"
+                className="text-xs text-red-600 dark:text-red-400 hover:underline"
               >
                 Reset All
               </button>
@@ -274,45 +277,44 @@ export default function ExploreClient({ initialOpportunities }: ExploreClientPro
             {/* Category selection */}
             <div className="mb-4">
               <label className="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">
-                Opportunity Type
+                Opportunity Sector
               </label>
               <select
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
-                className="w-full text-xs px-3 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-800 dark:text-slate-200 focus:outline-none focus:border-brand-500"
+                className="w-full text-xs px-3 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-800 dark:text-slate-200 focus:outline-none focus:border-red-500"
               >
-                <option value="ALL">All Categories</option>
-                <option value="SCHOLARSHIP">🎓 Scholarships</option>
-                <option value="JOB">💼 Jobs</option>
-                <option value="INTERNSHIP">🚀 Internships</option>
-                <option value="FELLOWSHIP">🌍 Fellowships</option>
-                <option value="COMPETITION">🏆 Competitions</option>
-                <option value="GRANT">💰 Grants</option>
-                <option value="EXCHANGE">✈️ Exchange Programs</option>
-                <option value="CONFERENCE">🎤 Conferences</option>
-                <option value="COURSE">📚 Courses</option>
+                <option value="ALL">All Sectors & Categories</option>
+                <option value="JOB">💼 Jobs (Lok Sewa, INGO, Tech, Banking)</option>
+                <option value="SCHOLARSHIP">🎓 Scholarships for Nepali Youth</option>
+                <option value="INTERNSHIP">🚀 Internships & Fellowships</option>
+                <option value="FELLOWSHIP">🌍 Research Fellowships</option>
+                <option value="COMPETITION">🏆 Tech & Innovation Contests</option>
+                <option value="GRANT">💰 Development & Research Grants</option>
               </select>
             </div>
 
-            {/* Country Selection */}
+            {/* Country / Nepal Location Selection */}
             <div className="mb-4">
               <label className="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">
-                Location
+                Nepal Region / Location
               </label>
               <select
                 value={selectedCountry}
                 onChange={(e) => setSelectedCountry(e.target.value)}
-                className="w-full text-xs px-3 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-800 dark:text-slate-200 focus:outline-none focus:border-brand-500"
+                className="w-full text-xs px-3 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-800 dark:text-slate-200 focus:outline-none focus:border-red-500"
               >
-                <option value="ALL">Global (All Locations)</option>
-                <option value="Global">Global Online</option>
-                <option value="United States">United States</option>
-                <option value="United Kingdom">United Kingdom</option>
-                <option value="Japan">Japan</option>
-                <option value="Canada">Canada</option>
-                <option value="Europe">Europe</option>
-                <option value="Switzerland">Switzerland</option>
-                <option value="Ireland">Ireland</option>
+                <option value="ALL">All Locations (Nepal & Abroad)</option>
+                <option value="Kathmandu Valley">🇳🇵 Kathmandu Valley</option>
+                <option value="Kathmandu (Baluwatar)">🇳🇵 Kathmandu (Baluwatar)</option>
+                <option value="Kathmandu (Hattisar) / Hybrid">🇳🇵 Kathmandu (Hattisar)</option>
+                <option value="Lalitpur (Sanepa)">🇳🇵 Lalitpur (Sanepa)</option>
+                <option value="Pokhara (Gandaki Province)">🇳🇵 Pokhara (Gandaki Province)</option>
+                <option value="Chitwan / Bagmati Province">🇳🇵 Chitwan / Bagmati</option>
+                <option value="Surkhet & Kathmandu">🇳🇵 Karnali & Surkhet</option>
+                <option value="United States (For Nepali Citizens)">🎓 USA (For Nepali Citizens)</option>
+                <option value="United Kingdom (For Nepali Citizens)">🎓 UK (For Nepali Citizens)</option>
+                <option value="Australia (For Nepali Citizens)">🎓 Australia (For Nepali Citizens)</option>
               </select>
             </div>
 
